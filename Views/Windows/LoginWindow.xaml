@@ -4,64 +4,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        x:Name="LoginWin">
-    <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Image Source="Background.jpg" Stretch="UniformToFill" />
-        <Grid>
+        x:Name="LoginWin" Width="800" Height="600" >
+    <Grid Margin="0,0,0,0">
+        <Image Source="Background.jpg" Stretch="UniformToFill" IsEnabled="False" />
+        <Grid Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Column="1" Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock 
-                         Text="Login" 
-                         TextAlignment="Center" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="1" Width="300"
-                         FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian"/>
-                <TextBox x:Name="Login" HorizontalAlignment="Center" VerticalAlignment="Center"
-                         Text="{Binding Path=Login, UpdateSourceTrigger=PropertyChanged}"
-                         Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="1" Width="300" FontSize="20" FontFamily="Algerian"/>
-                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text=""
-                           Grid.Column="0" Grid.Row="3"  Grid.ColumnSpan="1" Width="300" FontSize="22" FontFamily="Algerian"/>
-                <PasswordBox x:Name="PasswordText" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                             Password=""
-                             PasswordChar="*"
-                             PasswordChanged="OnPasswordChange"
-                             Grid.Column="0" Grid.Row="4"  Grid.ColumnSpan="1" Width="300" FontSize="20" FontFamily="Algerian"/>
-                <Button x:Name="LoginButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="5"
-                            Width="200" Height="30" FontSize="20" Content="Log in"
-                            Command="{Binding Path=LoginCommand}"
-                            CommandParameter="{Binding OpenNewWindowCallBack, ElementName=LoginWin}"
-                        FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7" >
-                    <Button.Foreground>
-                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
-                            <GradientStop Color="#FF812B2B"/>
-                            <GradientStop Color="#FFF6F0F0" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Button.Foreground>
-                </Button>
-                <TextBlock Grid.Row="0" x:Name="ErrorText" HorizontalAlignment="Center" Text="{Binding Path=ErrorText}" VerticalAlignment="Center"
-                           FontSize="20" Foreground="Red" FontFamily="Algerian" />
-            </Grid>
-            <Button  x:Name="RegistrationButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" 
-                     Click="OpenRegistrationWindow"
-                     Content="Registration" Width="200" Height="30" FontSize="20"
-                    FontFamily="Algerian" BorderBrush="#FFA7A7A7" Background="#FFC2FF17">
+            <TextBlock 
+                Text="Login"
+                Grid.Row="1" Grid.Column="1" Margin="0,21,0,50"
+                TextAlignment="Center" Width="122" 
+                FontSize="24" HorizontalAlignment="Center" FontFamily="Algerian" />
+            <TextBox x:Name="Login" HorizontalAlignment="Center" VerticalAlignment="Top"
+                Grid.Row="1" Grid.Column="1" Margin="0, 65, 0, 0" 
+                Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Width="300" FontSize="20" FontFamily="Algerian" Height="30" Grid.RowSpan="2"/>
+            <TextBlock 
+                Grid.Row="2" Grid.Column="1" Margin="0,21,0,50"
+                HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text="Password"
+                Width="300" FontSize="22" FontFamily="Algerian" Height="26"/>
+            <PasswordBox x:Name="PasswordText" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                Grid.Row="2" Grid.Column="1" Margin="0, 65, 0, 0" 
+                Password=""
+                PasswordChar="*"
+                PasswordChanged="OnPasswordChange" Width="300" FontSize="20" FontFamily="Algerian" Height="26" />
+            <Button x:Name="LoginButton" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Grid.Row="3" Grid.Column="1"
+                Width="200" Height="30" FontSize="20" Content="Login"
+                Command="{Binding LoginCommand}"
+                CommandParameter="{Binding OpenMainMenuWindowCallBack, ElementName=LoginWin}"
+                FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7" IsDefault="True" >
                 <Button.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <GradientStop Color="#FF812B2B"/>
+                        <GradientStop Color="#FFF6F0F0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Foreground>
+            </Button>
+            <TextBlock x:Name="ErrorText"
+                Grid.Row="3" Grid.Column="1" Margin="10"
+                HorizontalAlignment="Center" Text="{Binding ErrorText}" VerticalAlignment="Top"
+                FontSize="20" Foreground="Red" FontFamily="Algerian" Height="35" Width="300"  >
+            </TextBlock>
+            <Button x:Name="Register" HorizontalAlignment="Center" VerticalAlignment="Top"
+                Grid.Row="3" Grid.Column="1" Margin="0,120,0,0"
+                Width="200" Height="30" FontSize="20" Content="Sign up"
+                Command="{Binding RegisterCommand}"
+                FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7" IsDefault="True" Click="OpenRegistrationWindow" >
+                <Button.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
                         <GradientStop Color="#FF812B2B"/>
                         <GradientStop Color="#FFF6F0F0" Offset="1"/>
                     </LinearGradientBrush>

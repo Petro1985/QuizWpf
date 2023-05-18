@@ -29,10 +29,6 @@ public class ViewLoader : IViewsLoader
     }
 }
 
-public interface IViewModel
-{
-}
-
 public interface IView
 {
 }

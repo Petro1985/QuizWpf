@@ -22,9 +22,9 @@ namespace TestMVVM.Windows
             ((LoginVm) DataContext).Password = ((PasswordBox) sender).Password;
         }
 
-        public Action OpenNewWindowCallBack => () =>
+        public Action OpenMainMenuWindowCallBack => () =>
         {
-            _viewsLoader.LoadView<RegistrationWindow>();
+            _viewsLoader.LoadView<MainMenu>();
         };
 
         public string Test { get; set; } = "Test!!!";

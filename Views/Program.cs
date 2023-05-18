@@ -35,6 +35,12 @@ public static class Program
                 services.AddSingleton<RegistrationWindow>();
                 services.AddSingleton<RegistrationVm>();
 
+                services.AddSingleton<MainMenu>();
+                services.AddSingleton<MainMenuVm>();
+
+                services.AddSingleton<QuestionWindow>();
+                services.AddSingleton<QuestionVm>();
+
                 // services.AddSingleton<UserControl, LoginWindow>(f =>
                 // {
                 //     var userService = f.GetRequiredService<IUserService>();

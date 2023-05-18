@@ -24,7 +24,18 @@ namespace TestMVVM.Windows
 
         private void OpenLoginWindow(object sender, RoutedEventArgs e)
         {
+            ClearFields();
             OpenLoginWindowCallBack();
+        }
+
+        private void ClearFields()
+        {
+            var vm = DataContext as RegistrationVm;
+            vm!.Login = "";
+            vm!.Password = "";
+            vm!.PasswordRep = "";
+            vm!.ErrorText = "";
+            vm!.BirthDay = null;
         }
 
         private void OnPasswordChanged(object sender, RoutedEventArgs e)
