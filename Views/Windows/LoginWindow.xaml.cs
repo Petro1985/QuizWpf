@@ -8,7 +8,7 @@ namespace TestMVVM.Windows
 {
     public partial class LoginWindow : UserControl, IView
     {
-        private IViewsLoader _viewsLoader;
+        private readonly IViewsLoader _viewsLoader;
         
         public LoginWindow(IViewsLoader viewsLoader, LoginVm loginVm)
         {
@@ -24,10 +24,8 @@ namespace TestMVVM.Windows
 
         public Action OpenMainMenuWindowCallBack => () =>
         {
-            _viewsLoader.LoadView<MainMenu>();
+            _viewsLoader.LoadView<MainMenuWindow>();
         };
-
-        public string Test { get; set; } = "Test!!!";
 
         private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
         {

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ViewModels.ViewModel;
 
-public class QuestionVm : INotifyPropertyChanged
+public class QuizVm : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 

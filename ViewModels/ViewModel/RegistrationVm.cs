@@ -103,7 +103,7 @@ public sealed class RegistrationVm : INotifyPropertyChanged
             
         if (_password != _passwordRep)
         {
-            _errorText = "Passwords are different";
+            ErrorText = "Passwords are different";
             return;
         }
         try
@@ -116,12 +116,12 @@ public sealed class RegistrationVm : INotifyPropertyChanged
             };
             await _userService.TrySignUp(user);
             MessageBox.Show("You've been successfully registered");
-            _errorText = "";
+            ErrorText = "";
             ((Action) openLoginWindow).Invoke();
         }
         catch (Exception e)
         {
-            _errorText = e.Message;
+            ErrorText = e.Message;
         }
     }
 

@@ -3,9 +3,9 @@ using Model.Services.ViewService;
 
 namespace TestMVVM.Windows;
 
-public partial class QuestionWindow : UserControl, IView
+public partial class QuizWindow : UserControl, IView
 {
-    public QuestionWindow()
+    public QuizWindow()
     {
         InitializeComponent();
     }

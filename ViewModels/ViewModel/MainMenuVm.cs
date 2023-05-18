@@ -1,14 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Input;
+using DAL.Entities;
+using DAL.Repositories;
+using ViewModels.Commands;
 
 namespace ViewModels.ViewModel;
 
 public class MainMenuVm : INotifyPropertyChanged
 {
-    private List<int> _questionCounts;
-    private List<string> _topics;
+    public List<int> QuestionCounts { get; set; }
+    public List<TopicEntity> Topics { get; set; }
 
     private int _selectedQuestionCount;
     public int SelectedQuestionCount
@@ -21,8 +28,8 @@ public class MainMenuVm : INotifyPropertyChanged
         }
     }
 
-    private string _selectedTopic;
-    public string SelectedTopic
+    private Guid _selectedTopic;
+    public Guid SelectedTopic
     {
         get => _selectedTopic;
         set
@@ -32,14 +39,27 @@ public class MainMenuVm : INotifyPropertyChanged
         }
     }
 
-    public MainMenuVm()
+    public ICommand StartQuiz { get; set; }
+
+    private readonly TopicsRepository _topicsRepo;
+    public MainMenuVm(TopicsRepository topicsRepo)
     {
-        
+        QuestionCounts = new List<int> {5, 10, 15, 20};
+        _topicsRepo = topicsRepo;
+        StartQuiz = new RelayCommand((o) => StartQuizExecute(o), _ => true);
     }
 
-    public async Task InitValues()
+    private void StartQuizExecute(object? openNextWindow)
     {
+        MessageBox.Show($"Topic: {_selectedTopic} cunt: {_selectedQuestionCount}");
         
+        ((Action) openNextWindow!)();
+    }
+    
+    public async Task InitTopicsValue()
+    {
+        Topics = await _topicsRepo.GetAllTopics();
+        OnPropertyChanged("Topics");
     }
     
     public event PropertyChangedEventHandler? PropertyChanged;

@@ -51,7 +51,7 @@
                 </Button.Foreground>
             </Button>
             <TextBlock x:Name="ErrorText"
-                Grid.Row="3" Grid.Column="1" Margin="10"
+                Grid.Row="3" Grid.Column="1" Margin="10" TextAlignment="Center"
                 HorizontalAlignment="Center" Text="{Binding ErrorText}" VerticalAlignment="Top"
                 FontSize="20" Foreground="Red" FontFamily="Algerian" Height="35" Width="300"  >
             </TextBlock>

@@ -68,17 +68,20 @@ public sealed class LoginVm : INotifyPropertyChanged
     private bool LoginCommandCanExecute()
         => !string.IsNullOrWhiteSpace(_login) && !string.IsNullOrWhiteSpace(_password);
 
-    private async void LoginCommandExecute(object? param)
+    private async void LoginCommandExecute(object? openNextWindow)
     {
         try
         {
+            if (openNextWindow is null)
+            {
+                throw new ArgumentException("Null parameter", nameof(openNextWindow));
+            }
             await _userService.TryLogin(Login, Password);
-            var test = param as Action;
-            test!();
+            ((Action)openNextWindow)();
         }
         catch (Exception e)
         {
-            _errorText = e.Message;
+            ErrorText = e.Message;
         }
     }
 

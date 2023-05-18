@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using DAL;
+using DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,12 +36,14 @@ public static class Program
                 services.AddSingleton<RegistrationWindow>();
                 services.AddSingleton<RegistrationVm>();
 
-                services.AddSingleton<MainMenu>();
+                services.AddSingleton<MainMenuWindow>();
                 services.AddSingleton<MainMenuVm>();
 
-                services.AddSingleton<QuestionWindow>();
-                services.AddSingleton<QuestionVm>();
+                services.AddSingleton<QuizWindow>();
+                services.AddSingleton<QuizVm>();
 
+                
+                services.AddSingleton<TopicsRepository>();
                 // services.AddSingleton<UserControl, LoginWindow>(f =>
                 // {
                 //     var userService = f.GetRequiredService<IUserService>();
