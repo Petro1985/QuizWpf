@@ -9,5 +9,5 @@ public class QuestionEntity : BaseEntity<Guid>
     public Guid TopicId { get; set; }
 
     public TopicEntity Topic { get; set; }
-    public ICollection<AnswerEntity> Answers { get; set; }
+    public IList<AnswerEntity> Answers { get; set; }
 }

@@ -17,7 +17,6 @@ public sealed class LoginVm : INotifyPropertyChanged
 
         // LoginCommand = new LogInCommand();        
         LoginCommand = new RelayCommand(LoginCommandExecute, _ => LoginCommandCanExecute());
-        SignupCommand = new RelayCommand(SignupCommandExecute, _ => SignupCommandCanExecute());
     }
 
     #region ViewProperties
@@ -84,22 +83,6 @@ public sealed class LoginVm : INotifyPropertyChanged
             ErrorText = e.Message;
         }
     }
-
-    private bool SignupCommandCanExecute()
-        => !string.IsNullOrWhiteSpace(_login) && !string.IsNullOrWhiteSpace(_password);
-
-    private async void SignupCommandExecute(object? param)
-    {
-        try
-        {
-            // await _userService.TryLogin(Login, Password);
-        }
-        catch (Exception e)
-        {
-            _errorText = e.Message;
-        }
-    }
-
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {

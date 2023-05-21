@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -8,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using DAL.Entities;
 using DAL.Repositories;
+using Model.Services;
 using ViewModels.Commands;
 
 namespace ViewModels.ViewModel;
@@ -18,6 +20,7 @@ public class MainMenuVm : INotifyPropertyChanged
     public List<TopicEntity> Topics { get; set; }
 
     private int _selectedQuestionCount;
+    private readonly QuizEngine _quizEngine;
     public int SelectedQuestionCount
     {
         get => _selectedQuestionCount;
@@ -42,24 +45,34 @@ public class MainMenuVm : INotifyPropertyChanged
     public ICommand StartQuiz { get; set; }
 
     private readonly TopicsRepository _topicsRepo;
-    public MainMenuVm(TopicsRepository topicsRepo)
+    public MainMenuVm(TopicsRepository topicsRepo, QuizEngine quizEngine)
     {
         QuestionCounts = new List<int> {5, 10, 15, 20};
         _topicsRepo = topicsRepo;
-        StartQuiz = new RelayCommand((o) => StartQuizExecute(o), _ => true);
+        _quizEngine = quizEngine;
+        StartQuiz = new RelayCommand(StartQuizExecute, _ => true);
     }
 
-    private void StartQuizExecute(object? openNextWindow)
+    private async void StartQuizExecute(object? openQuizWindow)
     {
-        MessageBox.Show($"Topic: {_selectedTopic} cunt: {_selectedQuestionCount}");
-        
-        ((Action) openNextWindow!)();
+        if (openQuizWindow is Action openWindow)
+        {
+            await _quizEngine.InitNewQuiz(_selectedQuestionCount, _selectedTopic);
+            openWindow();
+        }
+        else
+        {
+            throw new ArgumentException("Wrong parameter type", nameof(openQuizWindow));
+        }
     }
     
     public async Task InitTopicsValue()
     {
         Topics = await _topicsRepo.GetAllTopics();
-        OnPropertyChanged("Topics");
+        Topics.Add(new TopicEntity {Name = "Any topic", Id = default});
+        SelectedTopic = Topics.Select(x => x.Id).FirstOrDefault();
+        SelectedQuestionCount = 20;
+        OnPropertyChanged(nameof(Topics));
     }
     
     public event PropertyChangedEventHandler? PropertyChanged;

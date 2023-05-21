@@ -27,9 +27,9 @@
                       DisplayMemberPath="Name"
                       SelectedValuePath="Id"
                       SelectedValue="{Binding Path=SelectedTopic}"
-                      Grid.Row="1" Grid.Column="1" Margin="0,50,0,29"
+                      Grid.Row="1" Grid.Column="1" Margin="0,49,0,21"
                       FontSize="20" HorizontalAlignment="Center" FontFamily="Algerian"
-                      Height="23" Width="200" >
+                      Height="30" Width="200" >
             </ComboBox>
             <TextBlock Text="Topic" TextAlignment="Center"
                        Grid.Row="1" Grid.Column="1"
@@ -47,8 +47,8 @@
             <Button x:Name="StartButton" Content="Start" Height="40" Width="150" FontSize="24" FontFamily="Segoe Print"
                     Command="{Binding StartQuiz}"
                     CommandParameter="{Binding OpenQuizWindow, ElementName=Menu}"
-                    FontStyle="Italic" FontWeight="Bold" Background="#FF29DFAA" Foreground="#FF871414" Grid.Column="1"
-                    Margin="75,60,75,0" Grid.Row="3" />
+                    FontStyle="Italic" Background="#FF29DFAA" Foreground="#FF871414" Grid.Column="1"
+                    Margin="75,60,75,0" Grid.Row="3" FontWeight="Bold" />
             <TextBlock Grid.Row="0" Grid.Column="0" x:Name="CheckResults" HorizontalAlignment="Left" Margin="85,339,0,0" TextWrapping="Wrap"
                        Text="TextBlock" VerticalAlignment="Top" Height="21" Width="660" />
         </Grid>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 using DAL;
 using DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -42,14 +41,12 @@ public static class Program
                 services.AddSingleton<QuizWindow>();
                 services.AddSingleton<QuizVm>();
 
-                
+                services.AddSingleton<ResultWindow>();
+                services.AddSingleton<ResultVm>();
+
                 services.AddSingleton<TopicsRepository>();
-                // services.AddSingleton<UserControl, LoginWindow>(f =>
-                // {
-                //     var userService = f.GetRequiredService<IUserService>();
-                //     var loginViewModel = new LoginViewModel(userService);
-                //     return new LoginWindow { DataContext = loginViewModel };
-                // });
+                services.AddSingleton<QuestionsRepository>();
+                services.AddSingleton<QuizEngine>();
 
                 services.AddDbContextFactory<QuizDb>(op =>
                 {
