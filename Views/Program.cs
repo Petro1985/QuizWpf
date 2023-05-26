@@ -44,6 +44,8 @@ public static class Program
                 services.AddSingleton<ResultWindow>();
                 services.AddSingleton<ResultVm>();
 
+                
+                // asd asd asd as
                 services.AddSingleton<TopicsRepository>();
                 services.AddSingleton<QuestionsRepository>();
                 services.AddSingleton<QuizEngine>();
