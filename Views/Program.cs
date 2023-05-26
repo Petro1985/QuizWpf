@@ -43,22 +43,10 @@ public static class Program
 
                 services.AddSingleton<ResultWindow>();
                 services.AddSingleton<ResultVm>();
-
                 
-                // asd asd asd as
                 services.AddSingleton<TopicsRepository>();
                 services.AddSingleton<QuestionsRepository>();
                 services.AddSingleton<QuizEngine>();
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-
-                // Тут commit в веткad aуsd sda NewBranch
 
                 services.AddDbContextFactory<QuizDb>(op =>
                 {
