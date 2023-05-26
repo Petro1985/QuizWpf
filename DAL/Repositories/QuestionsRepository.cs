@@ -25,6 +25,10 @@ public class QuestionsRepository
             result = result.Where(x => x.TopicId == topic);
         }
 
-        return await result.OrderBy(r => Guid.NewGuid()).Take(count).Include(x => x.Answers).ToListAsync();
+        return await result.OrderBy(r => Guid.NewGuid())
+            .Take(count)
+            .Include(x => x.Topic)
+            .Include(x => x.Answers)
+            .ToListAsync();
     }
 }

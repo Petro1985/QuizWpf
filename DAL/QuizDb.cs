@@ -14,6 +14,7 @@ public class QuizDb : DbContext
     {
     }
 
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<QuestionEntity>()
@@ -23,11 +24,14 @@ public class QuizDb : DbContext
             .HasMany(p => p.Answers)
             .WithOne(p => p.Question).HasForeignKey(p => p.QuestionId);
 
-        modelBuilder.Entity<TopicEntity>().ToTable("Topics")
+        modelBuilder.Entity<TopicEntity>()
+            .ToTable("Topics")
             .HasKey(x => x.Id);
-        modelBuilder.Entity<TopicEntity>().ToTable("Topics")
+        modelBuilder.Entity<TopicEntity>()
             .HasMany(p => p.Quiestions)
-            .WithOne(p => p.Topic).HasForeignKey(p => p.TopicId);
+            .WithOne(p => p.Topic)
+            .HasForeignKey(p => p.TopicId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<AnswerEntity>().ToTable("Answers").HasKey(x => x.Id);
         

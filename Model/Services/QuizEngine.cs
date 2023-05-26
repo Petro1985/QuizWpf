@@ -30,6 +30,7 @@ public class QuizEngine
         _currenQuestion = 0;
         _questions = (await _questionsRepo.GetQuestions(questionsCount, topic))
             .Select(x => new QuizQuestion(x)).ToList();
+        var realQuestion = await _questionsRepo.GetQuestions(questionsCount, topic);
         OnOnQuizStarted();
     }
 
@@ -64,11 +65,12 @@ public class QuizEngine
     {
         var currenQuestion = _questions[_currenQuestion];
         var correctAnswers = currenQuestion.Answers
+            .Select((x, i) => new {IsCorrect = x.IsCorrect, Ind = i})
             .Where(x => x.IsCorrect)
             .Select((x, i) => i)
             .ToList();
 
-        if (!correctAnswers.All(x => answers.Contains(x)))
+        if (!(correctAnswers.All(answers.Contains) && answers.Count == correctAnswers.Count))
         {
             return false;
         }

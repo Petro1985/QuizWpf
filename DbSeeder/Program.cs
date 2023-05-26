@@ -5,7 +5,8 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 
 var options = new DbContextOptionsBuilder();
-options.UseNpgsql("Server=localhost;Port=5432;Database=QuizEf;Uid=postgres;pwd=myword");
+options.UseNpgsql("Server=localhost;Port=5444;Database=QuizDb;Uid=Admin;pwd=mysecretpassword");
 
 await using var dbContext = new QuizDb(options.Options);
+
 await new Seeder().SeedDataBase(dbContext);
