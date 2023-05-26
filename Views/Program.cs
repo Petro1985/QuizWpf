@@ -44,10 +44,8 @@ public static class Program
                 services.AddSingleton<ResultWindow>();
                 services.AddSingleton<ResultVm>();
 
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
-                // Тут commit в ветку NewBranch
+                
+                // asd asd asd as
                 services.AddSingleton<TopicsRepository>();
                 services.AddSingleton<QuestionsRepository>();
                 services.AddSingleton<QuizEngine>();
@@ -60,7 +58,7 @@ public static class Program
                 // Тут commit в ветку NewBranch
                 // Тут commit в ветку NewBranch
 
-                // Тут commit в ветку NewBranch
+                // Тут commit в веткad aуsd sda NewBranch
 
                 services.AddDbContextFactory<QuizDb>(op =>
                 {
