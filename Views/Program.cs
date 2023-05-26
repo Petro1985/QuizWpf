@@ -48,6 +48,8 @@ public static class Program
                 services.AddSingleton<QuestionsRepository>();
                 services.AddSingleton<QuizEngine>();
 
+                // Тут commit в ветку NewBranch
+
                 services.AddDbContextFactory<QuizDb>(op =>
                 {
                     var connectionString = context.Configuration.GetConnectionString("QuizDb");
